@@ -5,14 +5,14 @@
 #    100,200,300,400,600
 # 200 is a little more than half the size but still readable.
 resolution=200
-#device=$1
-device='brother4:net1;dev0'
+device=$1
+#device='brother4:net1;dev0'
 #BASE= /home/glamke/brscan
 sleep  0.01
 output_tmp=/home/glamke/brscan/"`date +%Y%m%d_%H%M%S`"
 echo "scan from $2($device)"
 # Parameters on blog here 
-scanadf --mode "24bit Color[Fast]" --resolution 300 -y 270 -o "$output_tmp"_%04d".pnm"
+scanadf --mode '24bit Color[Fast]' --resolution 300 -y 270 -o "$output_tmp"_%04d".pnm"
 for pnmfile in $(ls "$output_tmp"*)
 do
    echo pnmtops "$pnmfile"  "$pnmfile".ps
@@ -44,3 +44,4 @@ do
    rm $psfile
 done
 rm -f "$pnmfile".ps
+/opt/brother/scanner/brscan-skey/brscan-skey
