@@ -12,7 +12,9 @@ sleep  0.01
 output_tmp=/home/glamke/brscan/"`date +%Y%m%d_%H%M%S`"
 echo "scan from $2($device)"
 # Parameters on blog here 
-scanadf --mode '24bit Color[Fast]' --resolution 300 -y 270 -o "$output_tmp"_%04d".pnm"
+scanadf --device-name 'brother4:net1;dev0' --resolution $resolution -o"$output_tmp"_%04d
+# hanging with below param
+#scanadf --mode '24bit Color[Fast]' --resolution 300 -y 270 -o "$output_tmp"_%04d".pnm"
 for pnmfile in $(ls "$output_tmp"*)
 do
    echo pnmtops "$pnmfile"  "$pnmfile".ps
