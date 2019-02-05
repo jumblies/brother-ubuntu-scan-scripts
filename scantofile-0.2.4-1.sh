@@ -4,15 +4,16 @@
 #   $2 = friendly name
 #    100,200,300,400,600
 # 200 is a little more than half the size but still readable.
-resolution=200
+resolution=300
 device=$1
 #device='brother4:net1;dev0'
 #BASE= /home/glamke/brscan
-sleep  0.01
+sleep  1
 output_tmp=/home/glamke/brscan/"`date +%Y%m%d_%H%M%S`"
 echo "scan from $2($device)"
 # Parameters on blog here 
-scanadf --device-name 'brother4:net1;dev0' --resolution $resolution -o"$output_tmp"_%04d
+# scanadf is very choosy about parameters adn seems to hang on mode
+scanadf  --resolution $resolution -y 270 -o"$output_tmp"_%04d"CLR.pnm"
 # hanging with below param
 #scanadf --mode '24bit Color[Fast]' --resolution 300 -y 270 -o "$output_tmp"_%04d".pnm"
 for pnmfile in $(ls "$output_tmp"*)
