@@ -13,7 +13,7 @@ output_tmp=/home/glamke/brscan/"`date +%Y%m%d_%H%M%S`"
 echo "scan from $2($device)"
 # This is introduced to kill scanadf if the button on the scanner isn't pressed.
 # It has a timeout of 5 min before killing scanadf.
-nohup /opt/brother/scanner/brscan-skey/script/kill_scan_adf.sh &
+nohup /opt/brother/scanner/brscan-skey/script/kill_scan_adf.sh > /dev/null 2>&1 &
 # hangs on single page if putton not pushed. with below. 
 scanadf  --mode '24bit Color[Fast]' --resolution 300 -y 270 -o "$output_tmp"_%04d".pnm"
 #Below works fine for adf but like others hangs with flatbet.  trying above
